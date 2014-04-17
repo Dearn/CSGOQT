@@ -66,10 +66,8 @@ void Jsonowanie::parsejson()
   this->jdata =this->root.get("playerstats", 0).get("stats", 0);
 
   for(unsigned int i=0; i<this->jdata.size(); i++)
-    {
+    { //same as root.get("playerstats", 0).get("stats", 0).get("name", 0) ...
       std::cout << this->jdata[i].get("name", 0).asString() << ":\t" << this->jdata[i].get("value", 0).asInt() << std::endl;
-      // if(data[i].get("sex",0).asString() == "f")
-      // 	cout << data[i].get("name",0).asString() << endl;
     }
 
     
