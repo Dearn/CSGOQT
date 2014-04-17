@@ -16,15 +16,17 @@ private:
   CURLcode res;
   std::string url;
 public:
-  void downloadjson();
+  void downloadjson(std::string a);
   Json::Value root;
   Json::Value jdata;
+  // void pobierzlink(std::string a);
   void parsejson();
   Jsonowanie();
 
 
 
 };
+
 
 size_t write_data(void *ptr, size_t size, size_t nmemb, FILE *stream)
 {
@@ -36,9 +38,9 @@ size_t write_data(void *ptr, size_t size, size_t nmemb, FILE *stream)
 
 
 
-void Jsonowanie::downloadjson()
+void Jsonowanie::downloadjson(std::string a)
 {
-  url   = "http://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/?key=5EA2925C71116B95A5CF0E1DB6DD42B8&appid=730&steamid=76561198022618574";
+  this->url = a; // "http://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/?key=5EA2925C71116B95A5CF0E1DB6DD42B8&appid=730&steamid=76561198022618574";
   char outfilename[FILENAME_MAX] = "bbb.json";
   curl = curl_easy_init();
   if(curl)
@@ -65,7 +67,7 @@ void Jsonowanie::parsejson()
 
   for(unsigned int i=0; i<this->jdata.size(); i++)
     {
-      std::cout << this->jdata[i].get("name", 0).asString() << " bla bla:\t" << this->jdata[i].get("value", 0).asInt() << std::endl;
+      std::cout << this->jdata[i].get("name", 0).asString() << ":\t" << this->jdata[i].get("value", 0).asInt() << std::endl;
       // if(data[i].get("sex",0).asString() == "f")
       // 	cout << data[i].get("name",0).asString() << endl;
     }
@@ -76,14 +78,15 @@ void Jsonowanie::parsejson()
 Jsonowanie::Jsonowanie()
 {
 
-  downloadjson();  
-  parsejson();
+  downloadjson("http://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/?key=5EA2925C71116B95A5CF0E1DB6DD42B8&appid=730&steamid=76561198022618574");  
+
 
 }
 
 
 int main(void)
 {
-  Jsonowanie jsonik;
+  Jsonowanie csgo;
+  csgo.parsejson();
   return 0;
 }
