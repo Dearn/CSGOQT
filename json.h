@@ -18,6 +18,7 @@ private:
   FILE *fp;
   CURLcode res;
   std::string url;
+  bool doesFileExist(const std::string& name);
 
 
 public:
