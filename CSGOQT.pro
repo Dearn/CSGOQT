@@ -4,8 +4,9 @@
 
 TEMPLATE = app
 TARGET = CSGOQT
-INCLUDEPATH += .
-
+INCLUDEPATH += -I /usr/include/jsoncpp .
+QT += widgets core
+LIBS+= -lcurl -l:libjsoncpp.so
 # Input
 HEADERS += json.h qt.h
-SOURCES += json.cpp main.cpp qt.cpp test.cpp
+SOURCES += json.cpp main.cpp qt.cpp
