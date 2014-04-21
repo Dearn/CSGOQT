@@ -4,7 +4,7 @@
 #include <curl/easy.h>
 #include <string>
 #include "json/json.h"
-
+#include <sstream>
 
 extern size_t write_data(void *ptr, size_t size, size_t nmemb, FILE *stream);
 
@@ -26,7 +26,8 @@ public:
   Json::Value root;
   Json::Value jdata;
   // void pobierzlink(std::string a);
-  void parsejson();
+  void parsejson(bool);
   Jsonowanie();
+  ~Jsonowanie();
 
 };
