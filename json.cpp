@@ -41,7 +41,9 @@ void Jsonowanie::downloadjson(std::string url)
       /* always cleanup */
       curl_easy_cleanup(curl);
       fclose(fp);
+
     }
+  std::cout << "New json downloaded" << std::endl;
 }
 
 
@@ -54,10 +56,10 @@ void Jsonowanie::parsejson(bool test)
   this->reader.parse(this->file, this->root, false);
   this->jdata =this->root.get("playerstats", 0).get("stats", 0);
 
-  for(unsigned int i=0; i<10;i++) //this->jdata.size(); i++)
-    { //same as root.get("playerstats", 0).get("stats", 0).get("name", 0) ...
-      std::cout << this->jdata[i].get("name", 0).asString() << ":\t" << this->jdata[i].get("value", 0).asInt() << std::endl;
-    }
+  // for(unsigned int i=0; i<10;i++) //this->jdata.size(); i++)
+  //   { //same as root.get("playerstats", 0).get("stats", 0).get("name", 0) ...
+  //     std::cout << this->jdata[i].get("name", 0).asString() << ":\t" << this->jdata[i].get("value", 0).asInt() << std::endl;
+  //   }
 
     
 }

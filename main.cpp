@@ -24,6 +24,7 @@ int main(int argc, char **args)
   QWidget *widget = new QWidget;
   UIForm ui;
   ui.setupUi(widget);
+  widget->setLayout(&ui.layout);
   widget->show();
 
   return app.exec();

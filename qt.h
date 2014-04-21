@@ -1,5 +1,6 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QHeaderView>
@@ -17,12 +18,16 @@ private:
   Jsonowanie csgo;
   QTextEdit *textEdit;
   QPushButton *pushButton;
+  QPushButton *downloadButton;
+  
   void retranslateUi(QWidget *Form);
 
 public:
   void setupUi(QWidget *Form);
+  QVBoxLayout layout;
   ~UIForm();
 
 public slots:
   void buttonClicked();
+  void buttonClicked2();
 };
